@@ -19,13 +19,13 @@ ColumnLayout {
 
     Text {
         Layout.alignment: Qt.AlignHCenter
-        text: getIcon(batPercent)
+        text: root.getIcon(root.batPercent)
         color: root.color
     }
 
     Text {
         Layout.alignment: Qt.AlignHCenter
-        text: batInfo
+        text: root.batInfo
         color: root.color
     }
 
