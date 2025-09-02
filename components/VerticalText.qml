@@ -7,7 +7,7 @@ ColumnLayout {
     id: root
 
     default required property list<string> text
-    property int alignment: Qt.AlignHCenter | Qt.AlignVCenter
+    property int alignment: Qt.AlignHCenter
 
     spacing: 0
 

@@ -26,7 +26,7 @@ Variants {
             }
 
             Clock {
-                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                Layout.alignment: Qt.AlignHCenter
             }
         }
     }
