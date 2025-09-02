@@ -10,15 +10,6 @@ ColumnLayout {
     id: root
 
     property int persistentWorkspaces: 0
-    property string activeWorkspace: {
-        const focWs = Hyprland.focusedWorkspace;
-        return (focWs) ? focWs.name : '';
-    }
-    // NOTE: Can only detect if the user focuses on a window in the workspace
-    property string activeSpecialWorkspace: {
-        const curWs = Hyprland.activeToplevel.workspace;
-        return (curWs && curWs.id < 0) ? curWs.name : '';
-    }
 
     Ws {
         special: false
@@ -33,17 +24,27 @@ ColumnLayout {
         id: ws
 
         property int persistentWorkspaces: 0
-
         property bool special: false
+        readonly property list<HyprlandWorkspace> workspaces: Hyprland.workspaces.values.filter(x => !(x.name.startsWith("special:") ^ special))
+        readonly property string activeWorkspace: {
+            if (ws.special) {
+                // NOTE: Can only detect if the user focuses on a window in the workspace
+                const curWs = Hyprland.activeToplevel.workspace;
+                return (curWs && curWs.id < 0) ? curWs.name : '';
+            } else {
+                const focWs = Hyprland.focusedWorkspace;
+                return (focWs) ? focWs.name : '';
+            }
+        }
+
         model: ScriptModel {
             values: {
-                const workspaces = Hyprland.workspaces.values.filter(x => !(x.name.startsWith("special:") ^ special));
                 if (!ws.special) {
                     let shownWorkspaces = [];
-                    const lastWorkspaceId = workspaces[workspaces.length - 1].id;
+                    const lastWorkspaceId = ws.workspaces[ws.workspaces.length - 1].id;
                     const max = (lastWorkspaceId > ws.persistentWorkspaces) ? lastWorkspaceId : ws.persistentWorkspaces;
                     for (let i = 1; i <= max; ++i) {
-                        const w = workspaces.find(x => x.id === i);
+                        const w = ws.workspaces.find(x => x.id === i);
                         if (i > persistentWorkspaces && !w) {
                             continue;
                         }
@@ -51,7 +52,7 @@ ColumnLayout {
                     }
                     return shownWorkspaces;
                 } else {
-                    return workspaces.map(x => x.name);
+                    return ws.workspaces.map(x => x.name);
                 }
             }
         }
@@ -67,10 +68,20 @@ ColumnLayout {
             Text {
                 Layout.alignment: Qt.AlignHCenter
                 text: {
-                    if (wrapper.modelData === root.activeWorkspace || wrapper.modelData === root.activeSpecialWorkspace) {
-                        return '󰝥';
+                    if (ws.special) {
+                        if (wrapper.modelData === ws.activeWorkspace) {
+                            return '󰝤';
+                        } else {
+                            return '󰝣';
+                        }
                     } else {
-                        return (ws.special) ? '󰺕' : '󰝦';
+                        if (wrapper.modelData === ws.activeWorkspace) {
+                            return '󰝥';
+                        } else if (ws.workspaces.find(x => x.name === wrapper.modelData)) {
+                            return '󰻃';
+                        } else {
+                            return '󰝦';
+                        }
                     }
                 }
             }
