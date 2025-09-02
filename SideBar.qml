@@ -7,7 +7,7 @@ Variants {
     model: Quickshell.screens
 
     PanelWindow {
-        required property var modelData
+        required property ShellScreen modelData
         screen: modelData
 
         anchors {
@@ -29,6 +29,7 @@ Variants {
 
             Workspaces {
                 Layout.alignment: Qt.AlignHCenter
+                persistentWorkspaces: 5
             }
 
             VFiller {}

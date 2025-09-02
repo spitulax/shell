@@ -15,7 +15,7 @@ ColumnLayout {
         model: root.text
 
         Text {
-            required property var modelData
+            required property string modelData
             Layout.alignment: root.alignment
             text: modelData
         }
