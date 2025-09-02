@@ -2,6 +2,7 @@
 
 pragma ComponentBehavior: Bound
 
+import "../utils"
 import Quickshell
 import Quickshell.Widgets
 import Quickshell.Hyprland
@@ -12,34 +13,6 @@ ColumnLayout {
     id: root
 
     property int persistentWorkspaces: 0
-    readonly property list<HyprlandWorkspace> workspaces: Hyprland.workspaces.values
-    readonly property list<HyprlandToplevel> windows: Hyprland.toplevels.values
-    readonly property string activeWorkspace: {
-        const focWs = Hyprland.focusedWorkspace;
-        return (focWs) ? focWs.name : '';
-    }
-    property string activeSpecialWorkspace: ''
-
-    Connections {
-        target: Hyprland
-        function onRawEvent(event: HyprlandEvent) {
-            if (event.name === 'activewindowv2') {
-                if (event.data.length > 0) {
-                    const activeToplevel = root.windows.find(x => x.address === event.data);
-                    root.activeSpecialWorkspace = (activeToplevel && activeToplevel.workspace.id < 0) ? activeToplevel.workspace.name : '';
-                } else {
-                    root.activeSpecialWorkspace = '';
-                }
-            } else if (event.name === 'activespecialv2') {
-                const args = event.parse(3);
-                const id = args[0];
-                const name = args[1];
-                if (id < 0) {
-                    root.activeSpecialWorkspace = name;
-                }
-            }
-        }
-    }
 
     Ws {
         special: false
@@ -53,7 +26,7 @@ ColumnLayout {
         id: ws
 
         property bool special: false
-        readonly property list<HyprlandWorkspace> workspaces: root.workspaces.filter(x => !(x.name.startsWith("special:") ^ special))
+        readonly property list<HyprlandWorkspace> workspaces: Workspaces.workspaces.filter(x => !(x.name.startsWith("special:") ^ special))
 
         model: ScriptModel {
             values: {
@@ -86,15 +59,15 @@ ColumnLayout {
                 Layout.alignment: Qt.AlignHCenter
                 text: {
                     if (ws.special) {
-                        if (wrapper.modelData === root.activeSpecialWorkspace) {
+                        if (wrapper.modelData === Workspaces.activeSpecialWorkspace) {
                             return '󰝤';
                         } else {
                             return '󰝣';
                         }
                     } else {
-                        if (wrapper.modelData === root.activeWorkspace) {
+                        if (wrapper.modelData === Workspaces.activeWorkspace) {
                             return '󰝥';
-                        } else if (root.workspaces.find(x => x.name === wrapper.modelData)) {
+                        } else if (Workspaces.workspaces.find(x => x.name === wrapper.modelData)) {
                             return '󰻃';
                         } else {
                             return '󰝦';

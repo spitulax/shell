@@ -1,13 +1,14 @@
 // TODO: Calendar and multi-timezone info on click
 
 import "../components"
+import "../utils"
 import QtQuick
 import QtQuick.Layouts
 
 ColumnLayout {
     VerticalText {
         Layout.alignment: Qt.AlignHCenter
-        text: [ClockSource.wday, ClockSource.day, ClockSource.mon]
+        text: [Clock.wday, Clock.day, Clock.mon]
     }
 
     VSeparator {
@@ -16,6 +17,6 @@ ColumnLayout {
 
     VerticalText {
         Layout.alignment: Qt.AlignHCenter
-        text: [ClockSource.hour, ClockSource.min]
+        text: [Clock.hour, Clock.min]
     }
 }

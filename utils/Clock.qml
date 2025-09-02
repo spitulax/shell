@@ -5,6 +5,7 @@ import QtQuick
 
 Singleton {
     id: root
+
     readonly property string wday: format("ddd")
     readonly property string day: format("dd")
     readonly property string mon: format("MM")
