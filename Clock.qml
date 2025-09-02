@@ -1,27 +1,19 @@
+import "components"
 import QtQuick
 import QtQuick.Layouts
 
 ColumnLayout {
     spacing: 0
 
-    Text {
+    VerticalText {
         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-        text: ClockSource.wday
+        text: [ClockSource.wday, ClockSource.day, ClockSource.mon]
     }
-    Text {
+
+    VSeparator {}
+
+    VerticalText {
         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-        text: ClockSource.day
-    }
-    Text {
-        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-        text: ClockSource.mon
-    }
-    Text {
-        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-        text: ClockSource.hour
-    }
-    Text {
-        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-        text: ClockSource.min
+        text: [ClockSource.hour, ClockSource.min]
     }
 }
