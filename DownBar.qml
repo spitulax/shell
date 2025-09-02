@@ -6,7 +6,7 @@ Variants {
 
     PanelWindow {
         required property var modelData
-        screen: this.modelData
+        screen: modelData
 
         anchors {
             bottom: true

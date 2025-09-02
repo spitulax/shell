@@ -17,7 +17,7 @@ ColumnLayout {
         Text {
             required property var modelData
             Layout.alignment: root.alignment
-            text: this.modelData
+            text: modelData
         }
     }
 }
