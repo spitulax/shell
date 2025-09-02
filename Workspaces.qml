@@ -1,3 +1,5 @@
+// TODO: Show all windows in workspace on hover
+
 pragma ComponentBehavior: Bound
 
 import Quickshell
@@ -42,8 +44,7 @@ ColumnLayout {
                 if (!ws.special) {
                     let shownWorkspaces = [];
                     const lastWorkspaceId = ws.workspaces[ws.workspaces.length - 1].id;
-                    const max = (lastWorkspaceId > ws.persistentWorkspaces) ? lastWorkspaceId : ws.persistentWorkspaces;
-                    for (let i = 1; i <= max; ++i) {
+                    for (let i = 1; i <= Math.max(lastWorkspaceId, ws.persistentWorkspaces); ++i) {
                         const w = ws.workspaces.find(x => x.id === i);
                         if (i > persistentWorkspaces && !w) {
                             continue;

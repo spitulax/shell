@@ -19,6 +19,8 @@ Variants {
         implicitWidth: 32
 
         ColumnLayout {
+            spacing: 10
+
             anchors {
                 top: parent.top
                 bottom: parent.bottom
@@ -33,6 +35,10 @@ Variants {
             }
 
             VFiller {}
+
+            Battery {
+                Layout.alignment: Qt.AlignHCenter
+            }
 
             Clock {
                 Layout.alignment: Qt.AlignHCenter
