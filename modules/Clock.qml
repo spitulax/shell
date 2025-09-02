@@ -1,6 +1,6 @@
 // TODO: Calendar and multi-timezone info on click
 
-import "components"
+import "../components"
 import QtQuick
 import QtQuick.Layouts
 

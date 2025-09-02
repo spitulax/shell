@@ -31,8 +31,8 @@ ColumnLayout {
         readonly property string activeWorkspace: {
             if (ws.special) {
                 // NOTE: Can only detect if the user focuses on a window in the workspace
-                const curWs = Hyprland.activeToplevel.workspace;
-                return (curWs && curWs.id < 0) ? curWs.name : '';
+                const curWin = Hyprland.activeToplevel;
+                return (curWin && curWin.workspace.id < 0) ? curWin.workspace.name : '';
             } else {
                 const focWs = Hyprland.focusedWorkspace;
                 return (focWs) ? focWs.name : '';
@@ -43,10 +43,10 @@ ColumnLayout {
             values: {
                 if (!ws.special) {
                     let shownWorkspaces = [];
-                    const lastWorkspaceId = ws.workspaces[ws.workspaces.length - 1].id;
+                    const lastWorkspaceId = (ws.workspaces.length > 0) ? ws.workspaces[ws.workspaces.length - 1].id : 0;
                     for (let i = 1; i <= Math.max(lastWorkspaceId, ws.persistentWorkspaces); ++i) {
                         const w = ws.workspaces.find(x => x.id === i);
-                        if (i > persistentWorkspaces && !w) {
+                        if (i > ws.persistentWorkspaces && !w) {
                             continue;
                         }
                         shownWorkspaces.push(i.toString());
