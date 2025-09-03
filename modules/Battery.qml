@@ -1,25 +1,13 @@
 // TODO: Extra info tooltip
 // TODO: Power profile on click (through auto-cpufreq)
+import "../components"
 import "../utils"
 import QtQuick
-import QtQuick.Layouts
 
-ColumnLayout {
+VerticalText {
     id: root
 
-    readonly property string color: (Battery.isCharging) ? 'green' : 'default'
-
-    spacing: 0
-
-    Text {
-        Layout.alignment: Qt.AlignHCenter
-        text: Battery.getIcon()
-        color: root.color
-    }
-
-    Text {
-        Layout.alignment: Qt.AlignHCenter
-        text: Battery.batInfo
-        color: root.color
-    }
+    // TODO: Colourscheme
+    color: (Battery.isCharging) ? 'green' : ''
+    text: [Battery.getIcon(), Battery.batInfo]
 }

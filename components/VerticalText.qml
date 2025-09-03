@@ -8,6 +8,7 @@ ColumnLayout {
 
     default required property list<string> text
     property int alignment: Qt.AlignHCenter
+    property string color
 
     spacing: 0
 
@@ -18,6 +19,7 @@ ColumnLayout {
             required property string modelData
             Layout.alignment: root.alignment
             text: modelData
+            color: root.color
         }
     }
 }
