@@ -1,5 +1,6 @@
 pragma Singleton
 
+import "../utils"
 import Quickshell
 import Quickshell.Services.Pipewire
 
@@ -14,15 +15,7 @@ Singleton {
         if (root.muted) {
             return '󰖁';
         } else {
-            const volPercent = Math.round(root.volPercent * 100);
-            const icons = ['󰕿', '󰖀', '󰕾'];
-            const interval = Math.floor(100 / icons.length);
-            for (let i = 0; i < icons.length; ++i) {
-                if (volPercent < interval * (i + 1)) {
-                    return icons[i];
-                }
-            }
-            return icons[icons.length - 1];
+            return Utils.lerpIcon(['󰕿', '󰖀', '󰕾'], root.volPercent);
         }
     }
 

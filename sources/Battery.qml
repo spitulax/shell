@@ -1,5 +1,6 @@
 pragma Singleton
 
+import "../utils"
 import Quickshell
 import Quickshell.Services.UPower
 import QtQuick
@@ -16,15 +17,7 @@ Singleton {
 
     function getIcon(): string {
         if (isBattery) {
-            const batPercent = Math.round(root.batPercent * 100);
-            const icons = ['', '', '', '', ''];
-            const interval = Math.round(100 / icons.length);
-            for (let i = 0; i < icons.length; ++i) {
-                if (batPercent < interval * (i + 1)) {
-                    return icons[i];
-                }
-            }
-            return icons[icons.length - 1];
+            return Utils.lerpIcon(['', '', '', '', ''], root.batPercent);
         } else {
             return '';
         }
