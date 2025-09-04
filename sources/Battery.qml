@@ -12,8 +12,8 @@ Singleton {
     readonly property int state: (dev.ready) ? dev.state : UPowerDeviceState.Unknown
     readonly property real batPercent: (dev.ready) ? dev.percentage : 0.0
     readonly property bool isBattery: dev.ready && dev.type === UPowerDeviceType.Battery
-    readonly property string batInfo: (isBattery) ? Math.round(dev.percentage * 100) : 'DC'
     readonly property bool isCharging: state === UPowerDeviceState.Charging || state === UPowerDeviceState.FullyCharged
+    readonly property string batInfo: (isBattery) ? Math.round(dev.percentage * 100) : 'DC'
 
     function getIcon(): string {
         if (isBattery) {

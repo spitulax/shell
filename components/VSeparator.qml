@@ -3,7 +3,7 @@ import QtQuick.Layouts
 
 Rectangle {
     property real margin: 0
-    property real sideMargin: 0
+    property real sideMargin: 4
     property real thickness: 1
 
     Layout.fillWidth: true

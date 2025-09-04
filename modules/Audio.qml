@@ -9,5 +9,6 @@ import qs.sources
 
 VerticalText {
     id: root
-    text: [Audio.getIcon(), Audio.volume]
+
+    text: [Audio.getIcon(), Audio.volInfo]
 }

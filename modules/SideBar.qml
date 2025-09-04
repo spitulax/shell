@@ -16,8 +16,9 @@ Variants {
             top: true
         }
 
-        implicitWidth: 32
+        implicitWidth: 40
 
+        // FIXME: Fix the width. If the text gets wider the layout's width changes
         ColumnLayout {
             spacing: 10
 
@@ -35,6 +36,10 @@ Variants {
             }
 
             VFiller {}
+
+            Stats {
+                Layout.alignment: Qt.AlignHCenter
+            }
 
             Audio {
                 Layout.alignment: Qt.AlignHCenter

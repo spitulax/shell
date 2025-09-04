@@ -11,9 +11,7 @@ ColumnLayout {
         text: [Clock.wday, Clock.day, Clock.mon]
     }
 
-    VSeparator {
-        sideMargin: 5
-    }
+    VSeparator {}
 
     VerticalText {
         Layout.alignment: Qt.AlignHCenter

@@ -2,3 +2,7 @@
 
 > [!WARNING]
 > 🚧 In development 🚧
+
+## References
+
+- <https://github.com/caelestia-dots/shell>

@@ -8,8 +8,8 @@ Singleton {
     id: root
 
     readonly property real volPercent: fromNode(Pipewire.defaultAudioSink, 0.0, node => node.audio.volume)
-    readonly property string volume: Math.round(volPercent * 100)
     readonly property bool muted: fromNode(Pipewire.defaultAudioSink, false, node => node.audio.muted)
+    readonly property string volInfo: Math.round(volPercent * 100)
 
     PwObjectTracker {
         objects: [Pipewire.defaultAudioSink]
