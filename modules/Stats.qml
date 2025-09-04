@@ -7,18 +7,21 @@ import QtQuick.Layouts
 
 ColumnLayout {
     VerticalText {
+        Layout.alignment: Qt.AlignHCenter
         text: ["󰋊", Stats.storageInfo]
     }
 
     VSeparator {}
 
     VerticalText {
+        Layout.alignment: Qt.AlignHCenter
         text: ["󰘚", Stats.memInfo]
     }
 
     VSeparator {}
 
     VerticalText {
+        Layout.alignment: Qt.AlignHCenter
         text: ["󰍛", Stats.cpuInfo]
     }
 
