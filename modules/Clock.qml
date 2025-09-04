@@ -1,7 +1,7 @@
 // TODO: Click to open calendar and multi-timezone clock
 
-import "../components"
-import "../sources"
+import qs.components
+import qs.sources
 import QtQuick
 import QtQuick.Layouts
 

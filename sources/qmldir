@@ -1,4 +1,0 @@
-singleton Audio 1.0 Audio.qml
-singleton Battery 1.0 Battery.qml
-singleton Clock 1.0 Clock.qml
-singleton Workspaces 1.0 Workspaces.qml

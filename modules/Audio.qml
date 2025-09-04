@@ -4,8 +4,8 @@
 // - Right-click to open pwvucontrol
 // - Media (icon changes when playing media)
 
-import "../components"
-import "../sources"
+import qs.components
+import qs.sources
 
 VerticalText {
     id: root

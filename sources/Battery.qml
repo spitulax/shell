@@ -1,6 +1,6 @@
 pragma Singleton
 
-import "../utils"
+import qs.utils
 import Quickshell
 import Quickshell.Services.UPower
 import QtQuick

@@ -1,8 +1,8 @@
 // TODO: Click to open extra info menu
 // TODO: Power profile on click (through auto-cpufreq)
 
-import "../components"
-import "../sources"
+import qs.components
+import qs.sources
 import QtQuick
 
 VerticalText {

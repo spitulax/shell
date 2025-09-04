@@ -6,7 +6,7 @@ import QtQuick.Layouts
 ColumnLayout {
     id: root
 
-    default required property list<string> text
+    required property list<string> text
     property int alignment: Qt.AlignHCenter
     property string color
 

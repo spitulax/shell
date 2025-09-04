@@ -1,6 +1,6 @@
 pragma Singleton
 
-import "../utils"
+import qs.utils
 import Quickshell
 import Quickshell.Services.Pipewire
 
@@ -11,16 +11,16 @@ Singleton {
     readonly property string volume: Math.round(volPercent * 100)
     readonly property bool muted: fromNode(Pipewire.defaultAudioSink, false, node => node.audio.muted)
 
+    PwObjectTracker {
+        objects: [Pipewire.defaultAudioSink]
+    }
+
     function getIcon(): string {
         if (root.muted) {
             return '󰖁';
         } else {
             return Utils.lerpIcon(['󰕿', '󰖀', '󰕾'], root.volPercent);
         }
-    }
-
-    PwObjectTracker {
-        objects: [Pipewire.defaultAudioSink]
     }
 
     function fromNode(node: PwNode, fail: var, f): var {
