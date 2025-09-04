@@ -8,7 +8,14 @@ import QtQuick.Layouts
 ColumnLayout {
     VerticalText {
         Layout.alignment: Qt.AlignHCenter
-        text: [Clock.wday, Clock.day, Clock.mon]
+        text: [Clock.wday]
+    }
+
+    VSeparator {}
+
+    VerticalText {
+        Layout.alignment: Qt.AlignHCenter
+        text: [Clock.day, Clock.mon]
     }
 
     VSeparator {}
