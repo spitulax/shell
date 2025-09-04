@@ -14,7 +14,6 @@ Singleton {
     readonly property string batInfo: (isBattery) ? Math.round(dev.percentage * 100) : 'DC'
     readonly property bool isCharging: state === UPowerDeviceState.Charging || state === UPowerDeviceState.FullyCharged
 
-    // FIXME: Merge all `getIcon`s into one function. Change utils/ to sources/
     function getIcon(): string {
         if (isBattery) {
             const batPercent = Math.round(root.batPercent * 100);

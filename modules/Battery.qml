@@ -2,7 +2,7 @@
 // TODO: Power profile on click (through auto-cpufreq)
 
 import "../components"
-import "../utils"
+import "../sources"
 import QtQuick
 
 VerticalText {

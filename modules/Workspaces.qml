@@ -2,7 +2,7 @@
 
 pragma ComponentBehavior: Bound
 
-import "../utils"
+import "../sources"
 import Quickshell
 import Quickshell.Widgets
 import Quickshell.Hyprland

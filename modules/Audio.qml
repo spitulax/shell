@@ -5,7 +5,7 @@
 // - Media (icon changes when playing media)
 
 import "../components"
-import "../utils"
+import "../sources"
 
 VerticalText {
     id: root
