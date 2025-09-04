@@ -1,4 +1,4 @@
-// TODO: Calendar and multi-timezone info on click
+// TODO: Click to open calendar and multi-timezone clock
 
 import "../components"
 import "../utils"

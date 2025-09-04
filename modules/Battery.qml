@@ -1,5 +1,6 @@
-// TODO: Extra info tooltip
+// TODO: Click to open extra info menu
 // TODO: Power profile on click (through auto-cpufreq)
+
 import "../components"
 import "../utils"
 import QtQuick

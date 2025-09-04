@@ -11,14 +11,15 @@ Singleton {
     readonly property int state: (dev.ready) ? dev.state : UPowerDeviceState.Unknown
     readonly property real batPercent: (dev.ready) ? dev.percentage : 0.0
     readonly property bool isBattery: dev.ready && dev.type === UPowerDeviceType.Battery
-    readonly property string batInfo: (isBattery) ? Math.floor(dev.percentage * 100) : 'DC'
+    readonly property string batInfo: (isBattery) ? Math.round(dev.percentage * 100) : 'DC'
     readonly property bool isCharging: state === UPowerDeviceState.Charging || state === UPowerDeviceState.FullyCharged
 
+    // FIXME: Merge all `getIcon`s into one function. Change utils/ to sources/
     function getIcon(): string {
         if (isBattery) {
-            const batPercent = root.batPercent * 100;
+            const batPercent = Math.round(root.batPercent * 100);
             const icons = ['', '', '', '', ''];
-            const interval = Math.floor(100 / icons.length);
+            const interval = Math.round(100 / icons.length);
             for (let i = 0; i < icons.length; ++i) {
                 if (batPercent < interval * (i + 1)) {
                     return icons[i];
