@@ -14,15 +14,18 @@ Singleton {
         return (focWs) ? focWs.name : '';
     }
     property string activeSpecialWorkspace: ''
+    property HyprlandToplevel activeWindow: null
+    readonly property string activeWindowTitle: (root.activeWindow) ? root.activeWindow.title : "Desktop"
 
     Connections {
         target: Hyprland
         function onRawEvent(event: HyprlandEvent) {
             if (event.name === 'activewindowv2') {
                 if (event.data.length > 0) {
-                    const activeToplevel = root.windows.find(x => x.address === event.data);
-                    root.activeSpecialWorkspace = (activeToplevel && activeToplevel.workspace.id < 0) ? activeToplevel.workspace.name : '';
+                    root.activeWindow = root.windows.find(x => x.address === event.data);
+                    root.activeSpecialWorkspace = (root.activeWindow && root.activeWindow.workspace.id < 0) ? root.activeWindow.workspace.name : '';
                 } else {
+                    root.activeWindow = null;
                     root.activeSpecialWorkspace = '';
                 }
             } else if (event.name === 'activespecialv2') {

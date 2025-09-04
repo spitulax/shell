@@ -1,5 +1,5 @@
 import qs.components
-import qs.sources as S
+import qs.configs
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
@@ -27,8 +27,8 @@ Variants {
                 top: parent.top
                 bottom: parent.bottom
                 horizontalCenter: parent.horizontalCenter
-                topMargin: 5
-                bottomMargin: 5
+                topMargin: BarConfig.sideMargin
+                bottomMargin: BarConfig.sideMargin
             }
 
             Workspaces {
@@ -56,10 +56,6 @@ Variants {
 
             Clock {
                 Layout.alignment: Qt.AlignHCenter
-            }
-
-            Ref {
-                source: S.Network
             }
         }
     }
