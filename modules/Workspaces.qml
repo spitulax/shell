@@ -26,7 +26,7 @@ ColumnLayout {
         id: ws
 
         property bool special: false
-        readonly property list<HyprlandWorkspace> workspaces: Workspaces.workspaces.filter(x => !(x.name.startsWith("special:") ^ special))
+        readonly property list<HyprlandWorkspace> workspaces: Hypr.workspaces.filter(x => !(x.name.startsWith("special:") ^ special))
 
         model: ScriptModel {
             values: {
@@ -59,15 +59,15 @@ ColumnLayout {
                 Layout.alignment: Qt.AlignHCenter
                 text: {
                     if (ws.special) {
-                        if (wrapper.modelData === Workspaces.activeSpecialWorkspace) {
+                        if (wrapper.modelData === Hypr.activeSpecialWorkspace) {
                             return '󰝤';
                         } else {
                             return '󰝣';
                         }
                     } else {
-                        if (wrapper.modelData === Workspaces.activeWorkspace) {
+                        if (wrapper.modelData === Hypr.activeWorkspace) {
                             return '󰝥';
-                        } else if (Workspaces.workspaces.find(x => x.name === wrapper.modelData)) {
+                        } else if (Hypr.workspaces.find(x => x.name === wrapper.modelData)) {
                             return '󰻃';
                         } else {
                             return '󰝦';
