@@ -13,14 +13,14 @@ Singleton {
         return icons[icons.length - 1];
     }
 
-    // level: 0=KB, 1=MB, ...
+    // level: 0=B, 1=KB, ...
     function humanReadableUnit(n: real, level: int, rounding: int): string {
-        const units = ["K", "M", "G", "T"];
+        const units = ["B", "K", "M", "G", "T"];
         let i = 0, on = 0;
         for (; n >= 1 && i + level < units.length; n /= 1024) {
             on = n;
             ++i;
         }
-        return `${Math.round(on * Math.pow(10, rounding)) / Math.pow(10, rounding)}${units[i - 1 + level]}`;
+        return `${Math.round(on * Math.pow(10, rounding)) / Math.pow(10, rounding)}${units[Math.max(i + level - 1, 0)]}`;
     }
 }

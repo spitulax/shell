@@ -1,5 +1,6 @@
 pragma Singleton
 
+import qs.configs
 import qs.utils
 import Quickshell
 import Quickshell.Io
@@ -20,14 +21,14 @@ Singleton {
     property real lastCpuTotal: 0
 
     readonly property string cpuInfo: Math.round(cpuLoad * 100) / 100
-    readonly property string memInfo: Utils.humanReadableUnit(Stats.memUsed, 0, 1)
-    readonly property string storageInfo: Utils.humanReadableUnit(Stats.storageUsed, 0, 0)
+    readonly property string memInfo: Utils.humanReadableUnit(Stats.memUsed, 1, 1)
+    readonly property string storageInfo: Utils.humanReadableUnit(Stats.storageUsed, 1, 0)
 
     property int refCount: 0
 
     Timer {
         running: root.refCount > 0
-        interval: 5000
+        interval: TimerConfig.interval
         repeat: true
         triggeredOnStart: true
         onTriggered: {

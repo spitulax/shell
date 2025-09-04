@@ -1,4 +1,5 @@
 import qs.components
+import qs.sources as S
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
@@ -37,6 +38,10 @@ Variants {
 
             VFiller {}
 
+            NetworkSpeed {
+                Layout.alignment: Qt.AlignHCenter
+            }
+
             Stats {
                 Layout.alignment: Qt.AlignHCenter
             }
@@ -51,6 +56,10 @@ Variants {
 
             Clock {
                 Layout.alignment: Qt.AlignHCenter
+            }
+
+            Ref {
+                source: S.Network
             }
         }
     }
