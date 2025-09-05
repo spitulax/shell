@@ -17,16 +17,13 @@ Variants {
             top: true
         }
 
-        implicitWidth: 40
+        implicitWidth: BarConfig.sideBarWidth
 
-        // FIXME: Fix the width. If the text gets wider the layout's width changes
         ColumnLayout {
-            spacing: 10
+            spacing: BarConfig.itemSpacing
 
             anchors {
-                top: parent.top
-                bottom: parent.bottom
-                horizontalCenter: parent.horizontalCenter
+                fill: parent
                 topMargin: BarConfig.sideMargin
                 bottomMargin: BarConfig.sideMargin
             }

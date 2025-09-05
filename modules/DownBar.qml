@@ -17,15 +17,13 @@ Variants {
             right: true
         }
 
-        implicitHeight: 24
+        implicitHeight: BarConfig.downBarHeight
 
         RowLayout {
-            spacing: 10
+            spacing: BarConfig.itemSpacing
 
             anchors {
-                left: parent.left
-                right: parent.right
-                verticalCenter: parent.verticalCenter
+                fill: parent
                 leftMargin: BarConfig.sideMargin
                 rightMargin: BarConfig.sideMargin
             }
