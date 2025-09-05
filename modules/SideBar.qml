@@ -33,7 +33,7 @@ Variants {
                 persistentWorkspaces: 5
             }
 
-            VFiller {}
+            Filler {}
 
             NetworkSpeed {
                 Layout.alignment: Qt.AlignHCenter

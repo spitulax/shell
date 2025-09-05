@@ -28,7 +28,7 @@ Variants {
                 rightMargin: BarConfig.sideMargin
             }
 
-            HFiller {}
+            Filler {}
 
             WindowTitle {
                 Layout.alignment: Qt.AlignHCenter
